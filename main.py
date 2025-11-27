@@ -1,21 +1,9 @@
 class Solution(object):
-    def search(self, nums, target):
+    def construct2DArray(self, original, m, n):
         """
-        :type nums: List[int]
-        :type target: int
-        :rtype: int
+        :type original: List[int]
+        :type m: int
+        :type n: int
+        :rtype: List[List[int]]
         """
-        
-        def binary_search(arr, left, right, key):
-            if right < left:
-                return -1
-            mid = (left + right) // 2
-            if arr[mid] == key:
-                return mid
-            elif key > arr[mid]:
-                return binary_search(arr, mid + 1, right, key)
-            else:
-                return binary_search(arr, left, mid - 1, key)
-        
-        return binary_search(nums, 0, len(nums) - 1, target)
         
