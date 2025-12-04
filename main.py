@@ -27,25 +27,43 @@
 #                     )
 
 #         return dp[0][0]
+
 class Solution(object):
-    def moveZeroes(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: None Do not return anything, modify nums in-place instead.
-        """
+    def maxAreaOfIsland(self, grid):
+        rows, cols = len(grid), len(grid[0])
+        maxArea = 0
         
+        def DFS(i, j):
+            if i < 0 or j < 0 or i >= rows or j >= cols or grid[i][j] == 0:
+                return 0
+            
+            grid[i][j] = 0  # mark visited
+            area = 1
+            
+            area += DFS(i + 1, j)
+            area += DFS(i - 1, j)
+            area += DFS(i, j + 1)
+            area += DFS(i, j - 1)
+            
+            return area
+        
+        for i in range(rows):
+            for j in range(cols):
+                if grid[i][j] == 1:
+                    maxArea = max(maxArea, DFS(i, j))
+        
+        return maxArea
+
+    
 def main():
     sol = Solution()
-    grid = [
-        ["1","1","1","1","0"],
-        ["1","1","0","1","0"],
-        ["1","1","0","0","0"],
-        ["0","0","0","0","0"]
-    ]
-
-    result = sol.numIslands(grid)
+    grid = [[0,0,1,0,0,0,0,1,0,0,0,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,1,1,0,1,0,0,0,0,0,0,0,0],[0,1,0,0,1,1,0,0,1,0,1,0,0],[0,1,0,0,1,1,0,0,1,1,1,0,0],[0,0,0,0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,0,0,0,0,0,0,1,1,0,0,0,0]]
+    result = sol.maxAreaOfIsland(grid)
     print(result)
-
-
+    
 if __name__ == "__main__":
     main()
+    
+    
+    
+  
