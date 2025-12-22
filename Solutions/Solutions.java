@@ -23,10 +23,28 @@ public class Solutions {
         return count;
     }
 
+    public int peakIndexInMountainArray(int[] arr) {
+        int point = 1 ;
+        int i = 0 ;
+        while (arr[i] < arr[point]){
+            i++;
+            point++;
+        }
+        return i ;
+    }
+
+    public int findMin(int[] nums) {
+        for(int i = 1; i < nums.length; i++){
+            if(nums[i] < nums[i-1]){
+                return nums[i];
+            }
+        }
+        return nums[0];
+    }
+
     public static void main(String[] args) {
         Solutions sol = new Solutions();
-        int[][] points = {{10,16}, {2,8}, {1,6}, {7,12}};
-        int result = sol.findMinArrowShots(points);
-        System.out.println("Minimum number of arrows needed: " + result);
+        int[] nums = {3,4,5,1,2};
+        System.out.println(sol.findMin(nums));
     }
 }

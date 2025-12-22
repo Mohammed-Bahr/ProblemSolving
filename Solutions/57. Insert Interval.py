@@ -1,23 +1,39 @@
-from typing import *
+from typing import List
+
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
-        starts:list[int] = []
-        ends:list[int] = []
         ans = []
+        i = 0
         n = len(intervals)
-        for i in intervals :
-            starts.append(i[0])
-            ends.append(i[1])
-            
-        i:int = 0
-        j:int = 0
-        
-        while i < n :
-            if newInterval[0] <= ends[i]:
-                if newInterval[1] >= starts[j]:
-                    ans.append([min(starts[j] , ends[j]) , max(starts[i] , ends[i])])
-            else :
-                ans.append([starts[i] , ends[j]])
-                    
-                
-         
+
+        while i < n and intervals[i][1] < newInterval[0]:
+            ans.append(intervals[i])
+            i += 1
+
+        while i < n and intervals[i][0] <= newInterval[1]:
+            newInterval[0] = min(newInterval[0], intervals[i][0])
+            newInterval[1] = max(newInterval[1], intervals[i][1])
+            i += 1
+
+        ans.append(newInterval)
+
+        while i < n:
+            ans.append(intervals[i])
+            i += 1
+
+        return ans
+
+
+# ----------- main function to test -----------
+def main():
+    solution = Solution()
+
+    intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]]
+    newInterval = [4,8]
+
+    result = solution.insert(intervals, newInterval)
+    print("Result:", result)
+
+
+if __name__ == "__main__":
+    main()
