@@ -2,13 +2,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "java",
-      "name": "Solutions",
-      "request": "launch",
-      "mainClass": "Solutions",
-      "projectName": "LeetCode_8ddabe93"
-    },
-    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
