@@ -7,22 +7,27 @@ class Solution:
         n = len(nums)
 
         for i in range(2, n):
-            
-            total = nums[i] + nums[i-1] + nums[i-2]
+            left , right = i + 1 , n - 1
 
-            if abs(total - target) < abs(res - target):
-                res = total
+            while left < right :
+                total = nums[i] + nums[left] + nums[right]
 
-            if res == target:
-                return res
-
+                if abs(total - target) < abs(res - target):
+                    res = total
+                    
+                if total < target:
+                    left += 1
+                elif total > target:
+                    right -= 1
+                else:
+                    return total  
         return res
 
 
 def main():
     sol = Solution()
-    nums = [-1, 2, 1, -4]
-    target = 1
+    nums = [4,0,5,-5,3,3,0,-4,-5]
+    target = -2
     print(sol.threeSumClosest(nums, target))
 
 
