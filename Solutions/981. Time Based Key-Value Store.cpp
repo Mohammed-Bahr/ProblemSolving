@@ -40,15 +40,6 @@ public:
     }
 };
 
-int main(){
-    cout << "Hello World" << endl;
-    TimeMap timeMap;
-    timeMap.set("foo", "bar", 1);
-    cout << timeMap.get("foo", 1) << endl;
-    return 0;
-}
-
-
 
 
 class TimeMap {
