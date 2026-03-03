@@ -35,4 +35,9 @@ class Solution(object):
             
             
         return max(dp[State.SELL], dp[State.REST])
-            
+        
+
+sol = Solution()
+
+print(sol.maxProfit)
+

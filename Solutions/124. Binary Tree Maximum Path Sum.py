@@ -30,11 +30,7 @@ class TreeNode(object):
         self.right = right
 
 
-class Solution(object):
-    def unNamed(self, root):
-        if not root:
-            return 0
-
+lass Solution(object)
         left = max(0, self.unNamed(root.left))
         right = max(0, self.unNamed(root.right))
 
