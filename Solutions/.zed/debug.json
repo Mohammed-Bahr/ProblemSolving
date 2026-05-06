@@ -1,0 +1,51 @@
+[
+  {
+    "label": "Debug C++ (CMake)",
+    "build": {
+      "command": "cmake",
+      "args": ["--build", "build"],
+      "cwd": "$ZED_WORKTREE_ROOT",
+    },
+    "program": "$ZED_WORKTREE_ROOT/build/prog",
+    "request": "launch",
+    "adapter": "CodeLLDB",
+  },
+  {
+    "label": "Debug C++ (Manual File)",
+    "build": {
+      "command": "g++",
+      "args": ["$ZED_FILE", "-o", "prog", "-g"],
+      "cwd": "$ZED_WORKTREE_ROOT",
+    },
+    "program": "$ZED_WORKTREE_ROOT/prog",
+    "request": "launch",
+    "adapter": "CodeLLDB",
+  },
+  {
+    "label": "Debug Node (Backend)",
+    "program": "$ZED_WORKTREE_ROOT/server/index.js",
+    "request": "launch",
+    "adapter": "node",
+  },
+  {
+    "label": "Debug Node (Current File)",
+    "program": "$ZED_FILE",
+    "request": "launch",
+    "adapter": "node",
+  },
+  {
+    "label": "Python Active File",
+    "adapter": "Debugpy",
+    "program": "$ZED_FILE",
+    "request": "launch",
+  },
+  {
+    "adapter": "Debugpy",
+    "label": "run '…utions/hello.py'",
+    "request": "launch",
+    "python": "$ZED_CUSTOM_PYTHON_ACTIVE_ZED_TOOLCHAIN",
+    "args": [],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "program": "\"$ZED_FILE\"",
+  },
+]
