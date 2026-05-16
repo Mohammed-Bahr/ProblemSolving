@@ -1,0 +1,14 @@
+[
+  {
+    "label": "Debug C++",
+    "build": {
+      "command": "g++",
+      "args": ["-g", "$ZED_FILE", "-o", "${ZED_FILE}.out"],
+      "cwd": "$ZED_WORKTREE_ROOT"
+    },
+    "program": "${ZED_FILE}.out",
+    "request": "launch",
+    "adapter": "gdb",
+    "cwd": "$ZED_WORKTREE_ROOT"
+  }
+]
